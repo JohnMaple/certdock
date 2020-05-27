@@ -1,0 +1,13 @@
+version: '2'
+services:
+  backend:
+    image: cert-backend:latest
+    env_file: "./backend.env"
+  nginx:
+    image: cert-nginx:latest
+    volumes_from:
+      - backend
+    depends_on:
+      - backend
+    ports:
+      - "8888:80"
