@@ -6,7 +6,6 @@ services:
       - backend.env
     volumes:
       - backend:/var/www/backend
-      - ../../backend/public:/var/www/backend
     expose:
       - 9000
   nginx:
