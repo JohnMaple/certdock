@@ -5,8 +5,7 @@ services:
     env_file:
       - backend.env
     volumes:
-      - backend:/var/www/backend
-      - ../../backend/public/:/var/www/backend/public/
+      - ../../backend:/var/www/backend
     expose:
       - 9000
   nginx:
@@ -14,12 +13,11 @@ services:
     depends_on:
       - backend
     volumes:
-      - backend:/var/www/backend
+      - ../../backend:/var/www/backend
       - ../nginx/app.conf:/etc/nginx/sites-available/app.conf
+      - ../nginx/letsencrypt/:/var/www/letsencrypt
     expose:
       - 80
     ports:
       - '80:80'
       - '443:443'
-volumes:
-  backend:
